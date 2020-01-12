@@ -6,12 +6,16 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import com.hencoder.hencoderpracticedraw4.R;
 
+/**
+ * 旋转
+ */
 public class Practice05RotateView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Bitmap bitmap;
@@ -37,8 +41,17 @@ public class Practice05RotateView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        final int width = bitmap.getWidth();
+        final int height = bitmap.getHeight();
 
+        canvas.save();
+        canvas.rotate(180, point1.x + width / 2, point1.y + height / 2);
         canvas.drawBitmap(bitmap, point1.x, point1.y, paint);
+        canvas.restore();
+
+        canvas.save();
+        canvas.rotate(45, point2.x + width / 2, point2.y + height / 2);
         canvas.drawBitmap(bitmap, point2.x, point2.y, paint);
+        canvas.restore();
     }
 }

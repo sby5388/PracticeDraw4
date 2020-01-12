@@ -6,12 +6,16 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import com.hencoder.hencoderpracticedraw4.R;
 
+/**
+ * Translate 平移
+ */
 public class Practice03TranslateView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Bitmap bitmap;
@@ -38,7 +42,19 @@ public class Practice03TranslateView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        canvas.save();
+        // TODO: 2020/1/12 dx:-100:向左移动100个单位
+        // TODO: 2020/1/12 dy:-100:向上移动100个单位
+
+        canvas.translate(-100, -100);
+
         canvas.drawBitmap(bitmap, point1.x, point1.y, paint);
+        canvas.restore();
+        canvas.save();
+        // TODO: 2020/1/12 dx:200:向右移动200个单位
+        // TODO: 2020/1/12 dy:300:向下移动300个单位
+        canvas.translate(200,300);
         canvas.drawBitmap(bitmap, point2.x, point2.y, paint);
+        canvas.restore();
     }
 }
